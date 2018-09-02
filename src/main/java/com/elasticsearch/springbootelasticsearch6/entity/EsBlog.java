@@ -1,8 +1,10 @@
 package com.elasticsearch.springbootelasticsearch6.entity;
 
 import com.elasticsearch.springbootelasticsearch6.model.Blog;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -36,7 +38,8 @@ public class EsBlog implements Serializable {
 	private String summary;
 	@Field(type = FieldType.Text)
 	private String content;
-	@Field(type = FieldType.Date,index = false)  // 不做全文检索字段
+	@Field( type = FieldType.Date, format = DateFormat.custom,pattern = "yyyy-MM-dd HH:mm:ss") //新增的时间格式化
+	@JsonFormat (shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd HH:mm:ss",timezone="GMT+8") //返回的时间格式化
 	private Date createTime;
 	@Field(type = FieldType.Integer,index = false)  // 不做全文检索字段
 	private Integer readSize = 0; // 访问量、阅读量
