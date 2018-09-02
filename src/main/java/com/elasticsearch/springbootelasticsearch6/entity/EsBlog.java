@@ -47,7 +47,7 @@ public class EsBlog implements Serializable {
 	private Integer commentSize = 0;  // 评论量
 	@Field(type = FieldType.Integer,index = false)  // 不做全文检索字段
 	private Integer voteSize = 0;  // 点赞量
-	@Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word")
+	@Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word" ,store = true)
 	private String tags;  // 标签
 
 	/**
