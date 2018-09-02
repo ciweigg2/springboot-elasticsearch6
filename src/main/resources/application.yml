@@ -1,0 +1,16 @@
+spring:
+  #elasticsearch服务配置
+  data:
+    elasticsearch:
+      cluster-nodes: 118.184.218.184:9300
+      cluster-name: docker-cluster
+# 设置连接超时时间
+#spring.data.elasticsearch.properties.transport.tcp.connect_timeout=120s
+#  http:
+#    multipart:
+#      enabled: true
+#      max-file-size: 2MB
+#      max-request-size: 10MB
+#      file-size-threshold: 5MB
+
+
