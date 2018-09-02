@@ -20,7 +20,7 @@ import java.util.Date;
  * @Version V1.0.
  * @date 2018.08.22 21:40:19
  */
-@Document(indexName = "bbb", type = "bbb")
+@Document(indexName = "blog", type = "blog")
 @Data
 public class EsBlog implements Serializable {
 
@@ -44,7 +44,7 @@ public class EsBlog implements Serializable {
 	private Integer commentSize = 0;  // 评论量
 	@Field(type = FieldType.Integer,index = false)  // 不做全文检索字段
 	private Integer voteSize = 0;  // 点赞量
-	@Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "ik_smart", analyzer = "ik_smart")
+	@Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word")
 	private String tags;  // 标签
 
 	/**

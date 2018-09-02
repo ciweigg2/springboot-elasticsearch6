@@ -1,7 +1,9 @@
 package com.elasticsearch.springbootelasticsearch6.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.elasticsearch.springbootelasticsearch6.entity.EsBlog;
 import com.elasticsearch.springbootelasticsearch6.model.Blog;
+import com.elasticsearch.springbootelasticsearch6.repository.EsBlogRepository;
 import com.elasticsearch.springbootelasticsearch6.service.BlogService;
 import com.elasticsearch.springbootelasticsearch6.service.EsBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class BlogController {
 
 	@Autowired
     private BlogService blogService;
+
+	@Autowired
+    private EsBlogRepository esBlogRepository;
 	 
     @GetMapping
     @ResponseBody
@@ -65,6 +70,18 @@ public class BlogController {
     public String saveOrUpdate(Blog blog){
         blogService.saveBlog(blog);
         return "更新成功啦";
+    }
+
+    /**
+     * 中文分词测试
+     *
+     * @param tags 需要分词的参数
+     * @return
+     */
+    @GetMapping(value = "/ik")
+    @ResponseBody
+    public String ik(String tags){
+        return JSON.toJSONString(esBlogRepository.findEsBlogByTags(tags));
     }
 
 }

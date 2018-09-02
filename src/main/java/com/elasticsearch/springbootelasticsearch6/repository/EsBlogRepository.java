@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
+import java.util.List;
+
 
 /**
  * <p class="detail">
@@ -45,4 +47,6 @@ public interface EsBlogRepository extends ElasticsearchRepository<EsBlog, String
 	 * @date 2018.08.21 23:18:00
 	 */
 	EsBlog findByBlogId(Long blogId);
+
+	List<EsBlog> findEsBlogByTags(String tags);
 }
