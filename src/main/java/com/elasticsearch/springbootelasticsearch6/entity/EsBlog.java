@@ -4,10 +4,7 @@ import com.elasticsearch.springbootelasticsearch6.model.Blog;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.DateFormat;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,6 +20,7 @@ import java.util.Date;
  * @date 2018.08.22 21:40:19
  */
 @Document(indexName = "blog", type = "blog")
+//@Mapping(mappingPath = "usersearch_setting.json")
 @Data
 public class EsBlog implements Serializable {
 
@@ -47,7 +45,7 @@ public class EsBlog implements Serializable {
 	private Integer commentSize = 0;  // 评论量
 	@Field(type = FieldType.Integer,index = false)  // 不做全文检索字段
 	private Integer voteSize = 0;  // 点赞量
-//    @Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "hanlp_index", analyzer = "hanlp_index" ,store = true)
+//    @Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "hanlp-index", analyzer = "hanlp-index")
 	@Field(type = FieldType.Text,fielddata = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word" ,store = true)
 	private String tags;  // 标签
 
