@@ -19,8 +19,7 @@ import java.util.Date;
  * @Version V1.0.
  * @date 2018.08.22 21:40:19
  */
-@Document(indexName = "blog", type = "blog")
-//@Mapping(mappingPath = "usersearch_setting.json")
+@Document(indexName = "blog2", type = "blog2")
 @Data
 public class EsBlog implements Serializable {
 
