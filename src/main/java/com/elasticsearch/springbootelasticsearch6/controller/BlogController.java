@@ -13,14 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/blogs")
 public class BlogController {
 	
@@ -34,7 +31,6 @@ public class BlogController {
     private EsBlogRepository esBlogRepository;
 	 
     @GetMapping
-    @ResponseBody
     public Page<EsBlog> listEsBlogs(
             @RequestParam(value="order",required=false,defaultValue="new") String order,
             @RequestParam(value="keyword",required=false,defaultValue="" ) String keyword,
@@ -79,9 +75,8 @@ public class BlogController {
      * @return
      */
     @GetMapping(value = "/ik")
-    @ResponseBody
-    public String ik(String tags){
-        return JSON.toJSONString(esBlogRepository.findEsBlogByTags(tags));
+    public List<EsBlog> ik(String tags){
+        return esBlogRepository.findEsBlogByTags(tags);
     }
 
 }
