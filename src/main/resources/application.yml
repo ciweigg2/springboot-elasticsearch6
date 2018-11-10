@@ -3,7 +3,7 @@ spring:
   data:
     elasticsearch:
       cluster-nodes: 118.184.218.184:9300
-      cluster-name: docker-cluster
+      cluster-name: elasticsearch
 # 设置连接超时时间
 #spring.data.elasticsearch.properties.transport.tcp.connect_timeout=120s
 #  http:
