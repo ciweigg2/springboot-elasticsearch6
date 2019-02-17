@@ -9,4 +9,5 @@ public class SpringbootElasticsearch6Application {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootElasticsearch6Application.class, args);
     }
+
 }
