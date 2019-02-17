@@ -1,6 +1,5 @@
 package com.elasticsearch.springbootelasticsearch6.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.elasticsearch.springbootelasticsearch6.entity.EsBlog;
 import com.elasticsearch.springbootelasticsearch6.model.Blog;
 import com.elasticsearch.springbootelasticsearch6.repository.EsBlogRepository;
